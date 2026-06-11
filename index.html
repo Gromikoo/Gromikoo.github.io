@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Romiko — I find the right decision-makers and get them to reply | AI cold outreach</title>
+<meta name="description" content="I build AI systems that find the real decision-makers in your list — and research and add brand-new qualified ones — then get them to reply. So your pipeline is never empty. For agencies, consultants, and B2B service businesses." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #14110d;
+    --ink-2: #1d1913;
+    --ink-3: #261f17;
+    --cream: #f4ede0;
+    --cream-dim: #c8bda9;
+    --muted: #9b8f79;
+    --amber: #e8a33d;
+    --amber-deep: #c9821f;
+    --line: rgba(244, 237, 224, 0.12);
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Hanken Grotesk", system-ui, sans-serif;
+    --maxw: 1120px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--ink); color: var(--cream);
+    font-family: var(--sans); font-size: 18px; line-height: 1.6;
+    overflow-x: hidden; position: relative;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background:
+      radial-gradient(900px 600px at 80% -10%, rgba(232,163,61,0.16), transparent 60%),
+      radial-gradient(700px 500px at -10% 30%, rgba(201,130,31,0.10), transparent 55%);
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; opacity: 0.04; pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+  a { color: inherit; text-decoration: none; }
+
+  nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); background: rgba(20,17,13,0.72); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; }
+  .brand span { color: var(--amber); }
+  .nav-cta { font-weight: 600; font-size: 0.95rem; padding: 10px 20px; border-radius: 999px; border: 1px solid var(--amber); color: var(--amber); transition: all 0.25s ease; }
+  .nav-cta:hover { background: var(--amber); color: var(--ink); }
+
+  header { padding: 78px 0 56px; }
+  .badge { display: inline-flex; align-items: center; gap: 9px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--amber); border: 1px solid rgba(232,163,61,0.35); background: rgba(232,163,61,0.07); padding: 8px 16px; border-radius: 999px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(232,163,61,0.55);} 70%{box-shadow:0 0 0 10px rgba(232,163,61,0);} 100%{box-shadow:0 0 0 0 rgba(232,163,61,0);} }
+
+  h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.6rem, 6.6vw, 5rem); line-height: 1.03; letter-spacing: -0.025em; margin: 26px 0 0; max-width: 18ch; }
+  h1 em { font-style: italic; color: var(--amber); font-weight: 500; }
+  .lede { font-size: clamp(1.1rem, 2.1vw, 1.38rem); color: var(--cream-dim); max-width: 44ch; margin-top: 26px; line-height: 1.55; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 1.02rem; padding: 16px 30px; border-radius: 999px; transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease; }
+  .btn-primary { background: var(--amber); color: var(--ink); box-shadow: 0 14px 40px -12px rgba(232,163,61,0.6); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 50px -12px rgba(232,163,61,0.75); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--cream); }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+  /* HERO PORTRAIT */
+  .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 56px; align-items: center; }
+  .hero-portrait { position: relative; }
+  .hero-portrait::before { content: ""; position: absolute; inset: 20px -20px -20px 20px; border: 1px solid rgba(232,163,61,0.28); border-radius: 24px; z-index: 0; }
+  .portrait-frame { position: relative; z-index: 1; border-radius: 20px; overflow: hidden; border: 1px solid rgba(232,163,61,0.42); aspect-ratio: 1 / 1; box-shadow: 0 36px 90px -28px rgba(0,0,0,0.8); }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.06) brightness(1.02); }
+  .portrait-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(20,17,13,0) 42%, rgba(20,17,13,0.5) 100%),
+                radial-gradient(130% 95% at 72% 4%, rgba(232,163,61,0.2), transparent 55%); }
+  .portrait-tag { position: absolute; z-index: 2; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 9px;
+    font-size: 0.82rem; font-weight: 600; color: var(--cream); padding: 9px 15px; border-radius: 999px;
+    background: rgba(20,17,13,0.6); border: 1px solid rgba(244,237,224,0.14); backdrop-filter: blur(8px); }
+  .portrait-tag .dot { animation: pulse 2.4s infinite; }
+
+  /* FINAL CTA AVATAR */
+  .final-avatar { width: 86px; height: 86px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 24px;
+    border: 2px solid rgba(232,163,61,0.55); box-shadow: 0 0 0 6px rgba(232,163,61,0.07), 0 14px 30px -10px rgba(0,0,0,0.6);
+    filter: contrast(1.05); }
+
+  section { padding: 80px 0; }
+  .eyebrow { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); }
+  h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.08; letter-spacing: -0.02em; margin-top: 16px; max-width: 20ch; }
+  .section-lede { color: var(--cream-dim); font-size: 1.12rem; max-width: 48ch; margin-top: 18px; }
+
+  /* FUNNEL */
+  .funnel { margin-top: 48px; display: flex; align-items: stretch; gap: 12px; flex-wrap: wrap; }
+  .fstage { flex: 1 1 150px; background: var(--ink-2); border: 1px solid var(--line); border-radius: 16px; padding: 26px 20px; min-width: 0; }
+  .fstage:last-of-type { background: linear-gradient(160deg, rgba(232,163,61,0.18), var(--ink-2)); border-color: rgba(232,163,61,0.45); }
+  .fnum { font-family: var(--serif); font-weight: 700; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1; color: var(--amber); letter-spacing: -0.02em; }
+  .flab { margin-top: 12px; font-weight: 600; font-size: 1rem; color: var(--cream); }
+  .flab span { display: block; font-weight: 400; font-size: 0.9rem; color: var(--muted); margin-top: 5px; line-height: 1.4; }
+  .farrow { align-self: center; color: var(--amber); font-size: 1.4rem; font-weight: 700; flex: 0 0 auto; }
+  .funnel-note { margin-top: 26px; font-size: 1.02rem; color: var(--cream-dim); max-width: 60ch; border-left: 2px solid var(--amber); padding-left: 18px; }
+  .funnel-note b { color: var(--cream); font-weight: 600; }
+  .who-tag { display: inline-block; margin-top: 8px; font-size: 0.82rem; font-weight: 600; color: var(--ink); background: var(--amber); padding: 6px 14px; border-radius: 999px; }
+
+  /* PAIN */
+  .pain-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .pain { background: var(--ink-2); border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 26px 58px; position: relative; font-size: 1.06rem; }
+  .pain::before { content: "✕"; position: absolute; left: 22px; top: 24px; color: var(--amber); font-weight: 700; font-size: 1.1rem; }
+
+  /* SERVICES */
+  .svc-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .svc { background: var(--ink-2); border: 1px solid var(--line); border-radius: 18px; padding: 30px; transition: transform 0.22s ease, border-color 0.22s ease; }
+  .svc:hover { transform: translateY(-4px); border-color: rgba(232,163,61,0.5); }
+  .svc .ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: rgba(232,163,61,0.12); color: var(--amber); font-size: 1.4rem; }
+  .svc h4 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin-top: 20px; letter-spacing: -0.01em; }
+  .svc p { color: var(--cream-dim); margin-top: 10px; font-size: 1.02rem; }
+
+  /* STEPS */
+  .steps { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step .n { font-family: var(--serif); font-weight: 700; font-size: 3rem; color: var(--amber); line-height: 1; }
+  .step h4 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin-top: 14px; }
+  .step p { color: var(--cream-dim); margin-top: 10px; font-size: 1.02rem; }
+  .trust { margin-top: 48px; text-align: center; font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.9rem); color: var(--cream); line-height: 1.4; max-width: 26ch; margin-left: auto; margin-right: auto; }
+  .trust b { color: var(--amber); font-style: normal; font-weight: 600; }
+
+  /* SCOPE LINE */
+  .scope-line { margin-top: 36px; text-align: center; font-family: var(--serif); font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.35; color: var(--cream); max-width: 24ch; margin-left: auto; margin-right: auto; }
+  .scope-line b { color: var(--amber); font-weight: 600; }
+
+  /* TRANSFER LINE (proof) */
+  .transfer-line { margin-top: 18px; font-size: 1.02rem; color: var(--cream-dim); max-width: 60ch; border-left: 2px solid var(--amber); padding-left: 18px; }
+  .transfer-line b { color: var(--cream); font-weight: 600; }
+
+  /* OFFER (final CTA) */
+  .offer-steps { list-style: none; margin: 30px auto 0; max-width: 30ch; text-align: left; display: grid; gap: 14px; }
+  .offer-steps li { display: flex; gap: 13px; align-items: flex-start; font-size: 1.06rem; color: var(--cream); }
+  .offer-steps .num { flex: 0 0 auto; width: 27px; height: 27px; border-radius: 50%; background: rgba(232,163,61,0.14); border: 1px solid rgba(232,163,61,0.4); color: var(--amber); font-weight: 700; font-size: 0.92rem; display: grid; place-items: center; margin-top: 1px; }
+  .offer-keep { margin: 22px auto 0; max-width: 34ch; font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: var(--amber); }
+  .cta-reassure { margin-top: 18px; color: var(--muted); font-size: 0.98rem; }
+
+  /* WRITING */
+  .write-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .write-card { display: flex; flex-direction: column; background: var(--ink-2); border: 1px solid var(--line); border-radius: 18px; padding: 30px; transition: transform 0.22s ease, border-color 0.22s ease; }
+  .write-card:hover { transform: translateY(-4px); border-color: rgba(232,163,61,0.5); }
+  .write-tag { align-self: flex-start; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); background: rgba(232,163,61,0.1); border: 1px solid rgba(232,163,61,0.3); padding: 6px 13px; border-radius: 999px; }
+  .write-card h4 { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; line-height: 1.15; letter-spacing: -0.015em; margin-top: 20px; }
+  .write-card p { color: var(--cream-dim); margin-top: 12px; font-size: 1.02rem; flex: 1; }
+  .write-read { margin-top: 20px; font-weight: 600; font-size: 0.98rem; color: var(--amber); border-bottom: 1px solid transparent; align-self: flex-start; transition: border-color 0.2s ease; }
+  .write-card:hover .write-read { border-bottom-color: var(--amber); }
+  .write-all { margin-top: 30px; font-size: 1.02rem; color: var(--cream-dim); }
+  .write-all a { color: var(--cream); border-bottom: 1px solid var(--amber); font-weight: 600; }
+
+  .final { text-align: center; }
+  .final h2 { margin: 0 auto; }
+  .final .section-lede { margin: 18px auto 0; }
+  .final .cta-row { justify-content: center; margin-top: 40px; }
+  .contact-line { margin-top: 30px; color: var(--muted); font-size: 1rem; }
+  .contact-line a { color: var(--cream); border-bottom: 1px solid var(--amber); }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0; text-align: center; color: var(--muted); font-size: 0.92rem; }
+  footer .brand { font-size: 1.1rem; margin-bottom: 8px; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 940px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-portrait { max-width: 420px; }
+    .hero-portrait::before { inset: 16px -16px -16px 16px; }
+  }
+  @media (max-width: 760px) {
+    body { font-size: 17px; }
+    .wrap { padding: 0 20px; }
+    .pain-grid, .svc-grid, .steps, .write-grid { grid-template-columns: 1fr; }
+    .funnel { flex-direction: column; }
+    .farrow { transform: rotate(90deg); align-self: flex-start; margin-left: 24px; }
+    section { padding: 60px 0; }
+    header { padding: 54px 0 36px; }
+    .hero-portrait { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="brand">Romiko<span>.</span></div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="badge reveal"><span class="dot"></span> Open for new clients · AI cold outreach</div>
+        <h1 class="reveal">I get the right people to <em>reply</em> — even when they've never heard of you.</h1>
+        <p class="lede reveal">Hi, I'm Romiko. Your growth stalls when you can't get in front of the right decision-makers. I build AI systems that pull the real decision-makers out of your list — and <em>research and add brand-new qualified ones</em> when they're missing — then write to them like a real human and get them to write back. Real buyers, on your call list, ready to talk.</p>
+        <div class="cta-row reveal">
+          <a href="#contact" class="btn btn-primary">Fill my pipeline →</a>
+          <a href="#proof" class="btn btn-ghost">See it work</a>
+        </div>
+      </div>
+      <div class="hero-portrait reveal">
+        <div class="portrait-frame">
+          <img src="assets/miko.png" alt="Romiko — builds AI cold-outreach systems for agencies and B2B service businesses" width="1080" height="1080" />
+          <span class="portrait-tag"><span class="dot"></span> Romiko · I build the system</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROOF / FUNNEL -->
+<section id="proof">
+  <div class="wrap">
+    <div class="eyebrow reveal">Real proof · a live system</div>
+    <h2 class="reveal">How I made a brand-new company's first warm leads.</h2>
+    <p class="section-lede reveal">This is running right now for a real business — an in-home support agency with a brand-new owner that nobody in the field knew yet. I was handed a list of 190 contacts, found the few real decision-makers hiding inside it, and got total strangers to reply. Here's the whole machine, start to finish.</p>
+    <span class="who-tag reveal">In-home support agency · live since April 2026</span>
+
+    <div class="funnel">
+      <div class="fstage reveal"><div class="fnum">190</div><div class="flab">contacts handed over<span>A raw list I was given. Most were not the people who can say yes.</span></div></div>
+      <div class="farrow reveal">→</div>
+      <div class="fstage reveal"><div class="fnum">122</div><div class="flab">verified people<span>AI cleaned it down to only real, reachable contacts.</span></div></div>
+      <div class="farrow reveal">→</div>
+      <div class="fstage reveal"><div class="fnum">27</div><div class="flab">real decision-makers<span>Out of 190, only 27 could actually say yes. My system found them — and ranked who to call first.</span></div></div>
+      <div class="farrow reveal">→</div>
+      <div class="fstage reveal"><div class="fnum">4</div><div class="flab">replied<span>Strangers wrote back to a company they'd never heard of.</span></div></div>
+      <div class="farrow reveal">→</div>
+      <div class="fstage reveal"><div class="fnum">1 + 1</div><div class="flab">first wins<span>One referral and one meeting — now in motion. The company's first ever.</span></div></div>
+    </div>
+
+    <p class="funnel-note reveal"><b>And when a list runs thin:</b> here, only 27 of 190 were real decision-makers. When yours is short on the right people, my system doesn't stop — it <b>researches and scopes brand-new qualified decision-makers and adds them to your call list</b>, so you always have buyers worth calling. That's more conversations, and more cash flow.</p>
+
+    <p class="transfer-line reveal">This was a healthcare company. But <b>none of it is about healthcare.</b> It works for any business that grows when the right people reply — a recruiter who needs hiring managers, a consultant who needs founders, an agency that needs marketing heads. Same machine. Just different names on the list.</p>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">The real problem</div>
+    <h2 class="reveal">Not enough of the right people are talking to you.</h2>
+    <p class="section-lede reveal">You can be great at what you do. But if the right people won't reply, your sales have nothing to work with. The trouble starts at the very top.</p>
+    <div class="pain-grid">
+      <div class="pain reveal">You send messages and hear nothing back.</div>
+      <div class="pain reveal">You don't even have a list of the right decision-makers — let alone their contact info.</div>
+      <div class="pain reveal">You don't know who to chase first, so you chase everyone.</div>
+      <div class="pain reveal">You're great at closing — but your pipeline keeps running dry.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">What I do for you</div>
+    <h2 class="reveal">My AI agents find the right buyers — and get them to reply.</h2>
+    <div class="svc-grid">
+      <div class="svc reveal"><div class="ico">🔎</div><h4>Finds &amp; adds your real buyers</h4><p>My system digs the genuine decision-makers out of your list — then researches and scopes brand-new qualified ones to add, so your call list is full of people who can actually say yes.</p></div>
+      <div class="svc reveal"><div class="ico">🎯</div><h4>Verified &amp; ranked to call</h4><p>Every contact is checked as real and reachable — name, role, email, phone — then ranked so you know exactly who to call first.</p></div>
+      <div class="svc reveal"><div class="ico">✉️</div><h4>Emails that get replies</h4><p>Personal, human cold emails — no copy-paste, ever — that strangers actually answer.</p></div>
+      <div class="svc reveal"><div class="ico">📥</div><h4>Warm leads, handed to you</h4><p>Every reply lands on your call list. You just show up, call, and close — more conversations, more cash flow.</p></div>
+    </div>
+    <p class="scope-line reveal">I get the right strangers to <b>write back.</b> Closing them is your job. I just make sure your list is never empty.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">How working with me works</div>
+    <h2 class="reveal">Simple. And you stay in control.</h2>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h4>We talk</h4><p>You tell me who you wish would reply to you. We pick the exact people to go after.</p></div>
+      <div class="step reveal"><div class="n">2</div><h4>I build it</h4><p>I set up the whole machine and show it working — before it goes live. You always have the final say.</p></div>
+      <div class="step reveal"><div class="n">3</div><h4>Replies roll in</h4><p>Strangers start writing back. Warm leads land on your list. You take the meetings.</p></div>
+    </div>
+    <p class="trust reveal">You're always in control. <b>Nothing goes out without your okay.</b> I test everything first.</p>
+  </div>
+</section>
+
+<!-- WRITING / I TEACH THIS -->
+<section id="writing">
+  <div class="wrap">
+    <div class="eyebrow reveal">I teach this in the open</div>
+    <h2 class="reveal">I don't just run these systems — I write about how they work.</h2>
+    <p class="section-lede reveal">I share what I learn building real AI outreach systems, in plain language, so other small business owners can actually use it. Here's a taste.</p>
+    <div class="write-grid">
+      <a class="write-card reveal" href="https://www.linkedin.com/in/romiko-t-67559138b/recent-activity/all/" target="_blank" rel="noopener">
+        <span class="write-tag">Getting customers</span>
+        <h4>SMB Owners: The New Way to Get Customers in 2026</h4>
+        <p>You're paying $2,000 a month for a lead list. An AI agent can build a better one in four minutes — with a simple 5-input framework. The old way pitches. The new way helps.</p>
+        <span class="write-read">Watch on LinkedIn →</span>
+      </a>
+      <a class="write-card reveal" href="https://www.linkedin.com/pulse/how-ai-can-find-better-leads-than-your-sales-team-3-steps-romiko-t-gkcbe/" target="_blank" rel="noopener">
+        <span class="write-tag">Lead generation</span>
+        <h4>How AI Can Find Better Leads Than Your Sales Team in 3 Steps</h4>
+        <p>Most owners burn two hours every morning hunting for leads — or pay a VA $2,000 a month to do it. Here's how an AI agent finds the right people in three simple steps.</p>
+        <span class="write-read">Read on LinkedIn →</span>
+      </a>
+    </div>
+    <p class="write-all reveal">More articles, posts, and videos on my <a href="https://www.linkedin.com/in/romiko-t-67559138b/recent-activity/all/" target="_blank" rel="noopener">LinkedIn →</a></p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" class="final">
+  <div class="wrap">
+    <img class="final-avatar reveal" src="assets/miko.png" alt="Romiko" width="86" height="86" />
+    <div class="eyebrow reveal">Free · No hard sell</div>
+    <h2 class="reveal">Want to see the people I'd go after for you?</h2>
+    <p class="section-lede reveal">Book a quick call. Here's exactly how it works:</p>
+    <ol class="offer-steps reveal">
+      <li><span class="num">1</span><span>We talk for 15 minutes. You tell me who your best customers are.</span></li>
+      <li><span class="num">2</span><span>I go to work and find 3 to 5 real decision-makers for your business.</span></li>
+      <li><span class="num">3</span><span>I email you the list — their names and roles. It's yours to keep.</span></li>
+    </ol>
+    <p class="offer-keep reveal">Yours to keep — even if we never work together.</p>
+    <div class="cta-row reveal">
+      <a href="https://calendly.com/gromikooai/30min" target="_blank" rel="noopener" class="btn btn-primary">Book my free call →</a>
+      <a href="https://www.linkedin.com/in/romiko-t-67559138b/" target="_blank" rel="noopener" class="btn btn-ghost">See my LinkedIn →</a>
+    </div>
+    <p class="contact-line reveal">Prefer email? Reach me at <a href="mailto:gromikooai@gmail.com">gromikooai@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Romiko<span style="color:var(--amber)">.</span></div>
+    AI cold outreach that gets the right people to reply · © 2026
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".reveal").forEach((el, i) => {
+    el.style.transitionDelay = (Math.min(i, 6) * 70) + "ms";
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
