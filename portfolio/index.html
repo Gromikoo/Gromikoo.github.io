@@ -1,0 +1,296 @@
+<title>Past the Front Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --paper:#EDF1E7; --paper-2:#F6F8F2; --band:#E1E9DC;
+    --ink:#17251F; --ink-2:#41544A; --ink-3:#6B7D72;
+    --rule:#C4D2C0; --rule-hard:#9FB39B;
+    --green:#3F6B4C; --green-soft:#DCE9DA;
+    --red:#C2452D; --red-soft:#F3DED8;
+    --f-display:"Zilla Slab",Georgia,serif;
+    --f-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --pad:clamp(1.15rem,4vw,2.5rem);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#121A15; --paper-2:#18211B; --band:#1D2820;
+      --ink:#E4EDE3; --ink-2:#A9BCAB; --ink-3:#7D9080;
+      --rule:#2C3B31; --rule-hard:#43594A;
+      --green:#7FBA8B; --green-soft:#1C2C20;
+      --red:#E8836B; --red-soft:#33201B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#121A15; --paper-2:#18211B; --band:#1D2820;
+    --ink:#E4EDE3; --ink-2:#A9BCAB; --ink-3:#7D9080;
+    --rule:#2C3B31; --rule-hard:#43594A;
+    --green:#7FBA8B; --green-soft:#1C2C20;
+    --red:#E8836B; --red-soft:#33201B;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--f-body);
+       font-size:16px;line-height:1.55;margin:0;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 var(--pad) 4rem}
+  h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.12}
+  p{margin:0}
+  .mono{font-family:var(--f-mono);font-size:.68rem;font-weight:500;
+        letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* ---------- HEADER ---------- */
+  header{padding:clamp(2rem,6vw,3.5rem) 0 0;display:flex;flex-direction:column;gap:1.4rem}
+  .id{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+      align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.75rem}
+  .id .name{font-family:var(--f-mono);font-size:.72rem;font-weight:600;
+            letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  h1{font-size:clamp(2.5rem,7vw,4.4rem);font-weight:700;letter-spacing:-.025em}
+  h1 em{font-style:normal;color:var(--green)}
+  .lede{font-size:clamp(1.05rem,2.1vw,1.2rem);color:var(--ink-2);max-width:56ch}
+  .want{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-mono);
+        font-size:.74rem;font-weight:600;letter-spacing:.07em;color:var(--ink);
+        background:var(--green-soft);border:1px solid var(--green);
+        padding:.4rem .7rem;border-radius:2px;width:fit-content}
+
+  /* ---------- NUMBERS ---------- */
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));
+         border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);margin-top:2rem}
+  .stat{padding:1.15rem 1rem;border-right:1px solid var(--rule);
+        display:flex;flex-direction:column;gap:.25rem}
+  .stat:last-child{border-right:0}
+  .stat b{font-family:var(--f-display);font-size:clamp(1.75rem,4vw,2.3rem);font-weight:700;
+          line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .stat span{font-family:var(--f-mono);font-size:.63rem;letter-spacing:.11em;
+             text-transform:uppercase;color:var(--ink-3);line-height:1.35}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding-top:clamp(2.5rem,6vw,3.75rem)}
+  .head{display:flex;gap:1rem;align-items:baseline;border-bottom:1px solid var(--rule-hard);
+        padding-bottom:.55rem;margin-bottom:1.25rem}
+  .head h2{font-size:clamp(1.3rem,3vw,1.7rem);font-weight:600;letter-spacing:-.015em;flex:1}
+  .head .n{font-family:var(--f-mono);font-size:.7rem;font-weight:600;color:var(--green);letter-spacing:.1em}
+
+  .thesis{font-size:clamp(1.15rem,2.5vw,1.4rem);line-height:1.45;max-width:54ch;
+          font-family:var(--f-display);font-weight:500}
+  .thesis .hit{color:var(--green)}
+  .thesis + p{margin-top:.9rem;color:var(--ink-2);max-width:56ch}
+
+  /* ---------- LINE ROWS ---------- */
+  .rows{border:1px solid var(--rule-hard);
+        background:repeating-linear-gradient(to bottom,
+          var(--paper-2) 0,var(--paper-2) 54px,var(--band) 54px,var(--band) 108px)}
+  .r{display:grid;grid-template-columns:2.5rem 8.5rem 1fr;gap:0 1rem;
+     padding:.85rem 1rem;min-height:54px;border-bottom:1px solid var(--rule);align-items:baseline}
+  .r:last-child{border-bottom:0}
+  .r .i{font-family:var(--f-mono);font-size:.75rem;font-weight:600;color:var(--green);
+        font-variant-numeric:tabular-nums}
+  .r .k{font-weight:600;font-size:.94rem}
+  .r .v{font-size:.92rem;color:var(--ink-2)}
+  .r .v b{color:var(--ink);font-weight:600}
+
+  /* ---------- BLOCKS ---------- */
+  .blocks{border:1px solid var(--rule-hard);background:var(--paper-2)}
+  .b{display:grid;grid-template-columns:5.5rem 1fr;gap:0 1rem;padding:.8rem 1rem;
+     border-bottom:1px solid var(--rule);align-items:baseline}
+  .b:last-child{border-bottom:0}
+  .tag{font-family:var(--f-mono);font-size:.6rem;font-weight:600;letter-spacing:.09em;
+       padding:.2rem .4rem;border-radius:2px;text-align:center;
+       background:var(--red-soft);color:var(--red);border:1px solid var(--red)}
+  .b .v{font-size:.93rem}
+  .b .v em{font-style:normal;color:var(--ink-3);font-size:.86rem}
+
+  /* ---------- CALL ---------- */
+  .log{border:1px solid var(--ink);background:var(--paper-2)}
+  .log-head{background:var(--ink);color:var(--paper);padding:.55rem 1rem;
+            font-family:var(--f-mono);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;
+            display:flex;flex-wrap:wrap;gap:.3rem 1.1rem}
+  .turn{display:grid;grid-template-columns:5rem 1fr;gap:0 .9rem;padding:.5rem 1rem;align-items:baseline}
+  .turn .who{font-family:var(--f-mono);font-size:.65rem;font-weight:600;letter-spacing:.07em;
+             text-transform:uppercase;color:var(--ink-3)}
+  .turn.a .who{color:var(--green)}
+  .turn .s{font-size:.95rem}
+  .turn.key{background:var(--green-soft)}
+  .turn.key .s{font-weight:600}
+  .log-foot{border-top:1px solid var(--ink);padding:.8rem 1rem;font-size:.93rem}
+  .log-foot b{color:var(--green)}
+
+  /* ---------- FOOT ---------- */
+  .tools{margin-top:1.1rem;font-size:.88rem;color:var(--ink-2);max-width:70ch}
+  .tools b{color:var(--ink);font-family:var(--f-mono);font-size:.78rem;
+           letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:.25rem;color:var(--ink-3)}
+  footer{margin-top:clamp(2.5rem,6vw,3.5rem);border-top:2px solid var(--ink);padding-top:1.2rem;
+         display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;justify-content:space-between;align-items:flex-end}
+  footer p{font-size:.85rem;color:var(--ink-3);max-width:44ch}
+  .mail{font-family:var(--f-mono);font-size:.92rem;font-weight:600;color:var(--ink);
+        text-decoration:none;border-bottom:2px solid var(--green);padding-bottom:.1rem}
+  .mail:hover,.mail:focus-visible{color:var(--green)}
+  a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  @media (max-width:660px){
+    .r{grid-template-columns:2.2rem 1fr;gap:.1rem .8rem}
+    .r .v{grid-column:2}
+    .b{grid-template-columns:1fr;gap:.3rem}
+    .tag{width:fit-content}
+    .turn{grid-template-columns:1fr;gap:.1rem}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  /* ---------- SE REWRITE ---------- */
+  .say{font-size:1.02rem;color:var(--ink-2);max-width:60ch;margin-bottom:1.15rem}
+  .say b{color:var(--ink);font-weight:600}
+  .fix{border:1px solid var(--rule-hard);background:var(--paper-2)}
+  .f:nth-child(even){background:var(--band)}
+  .f{display:grid;grid-template-columns:1fr 1fr;gap:.15rem 1.4rem;padding:.85rem 1rem;
+     border-bottom:1px solid var(--rule)}
+  .f:last-child{border-bottom:0}
+  .f .broke,.f .did{font-size:.93rem}
+  .f .did{color:var(--ink-2)}
+  .f .broke::before{content:"BROKE";display:block;font-family:var(--f-mono);font-size:.58rem;
+                    letter-spacing:.11em;color:var(--red);margin-bottom:.15rem}
+  .f .did::before{content:"FIXED";display:block;font-family:var(--f-mono);font-size:.58rem;
+                  letter-spacing:.11em;color:var(--green);margin-bottom:.15rem}
+  .lrs{border:1px solid var(--rule-hard);background:var(--paper-2)}
+  .lr{display:grid;grid-template-columns:7.5rem 1fr;gap:0 1rem;padding:.75rem 1rem;
+      border-bottom:1px solid var(--rule);align-items:baseline}
+  .lr:last-child{border-bottom:0}
+  .lr .k{font-family:var(--f-mono);font-size:.66rem;font-weight:600;letter-spacing:.09em;
+         text-transform:uppercase;color:var(--green)}
+  .lr .v{font-size:.93rem}
+  .lr .v em{font-style:normal;color:var(--ink-3);font-size:.87rem}
+  .tail{margin-top:1rem;font-size:.9rem;color:var(--ink-2);max-width:68ch}
+  .tail b{display:block;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;
+          text-transform:uppercase;color:var(--ink-3);margin-bottom:.2rem}
+  @media (max-width:640px){
+    .f{grid-template-columns:1fr;gap:.6rem}
+    .lr{grid-template-columns:1fr;gap:.2rem}
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="id">
+      <span class="nm">Gromiko Tchanmeni &middot; gromikooai@gmail.com</span>
+      <span class="mono">Rockville MD &middot; Remote</span>
+    </div>
+
+    <h1>The demo always works.<br>The <em>real call</em> is where it breaks.</h1>
+
+    <p class="lede">
+      I build outbound voice agents and take them onto real phone lines — switchboards,
+      gatekeepers, people who interrupt. Below is one agent's first four live calls: what it
+      survived, what it broke on, and what I changed after each one.
+    </p>
+
+    <span class="want">Open to: Voice AI Implementation &middot; Solutions Engineering &middot; Remote (US)</span>
+  </header>
+
+  <div class="strip">
+    <div class="stat"><b>10</b><span>option phone tree<br>beaten unassisted</span></div>
+    <div class="stat"><b>4</b><span>live calls<br>every failure logged</span></div>
+    <div class="stat"><b>8</b><span>pre-dial tests<br>before every batch</span></div>
+    <div class="stat"><b>6</b><span>gates that block<br>a bad record</span></div>
+    <div class="stat"><b>195</b><span>accounts delivered<br>zero duplicates</span></div>
+  </div>
+
+  <section>
+    <div class="head"><span class="n">01</span><h2>The call</h2></div>
+    <p class="say">
+      A recruiting-agency client needed to know which employers would actually work with an
+      outside recruiter. That can't be scraped, so the agent asks. <b>This is its first live call
+      that reached a human.</b>
+    </p>
+
+    <div class="log">
+      <div class="log-head"><span>Live outbound &middot; Retell</span><span>Names redacted</span></div>
+      <div class="turn a"><span class="who">Agent</span><span class="s">Hits an auto-attendant reading out <strong>ten names and extensions</strong>. Identifies the target, dials the extension. No human involved.</span></div>
+      <div class="turn"><span class="who">HR mgr</span><span class="s">"Human resources, at your service."</span></div>
+      <div class="turn a key"><span class="who">Agent</span><span class="s">"Are you filling that one in-house, or would you look at candidates from an agency you haven't worked with before?"</span></div>
+      <div class="turn key"><span class="who">HR mgr</span><span class="s">"Well, it's already been filled. I closed it out Friday afternoon."</span></div>
+      <div class="turn a"><span class="who">Agent</span><span class="s">"Got it. Thanks for letting me know." Ends without pushing.</span></div>
+      <div class="log-foot"><b>The job board still had that role listed as open.</b> The agent surfaced something no scraper could reach &mdash; a fact that existed only in someone's head.</div>
+    </div>
+
+    <p class="tail">
+      <b>The extraction rule</b>
+      No verbatim quote, no verdict. The grader refuses to return an answer when nothing was
+      captured, because a claim about an employer with nothing quoted is an inference, not data.
+      Recording available on request.
+    </p>
+  </section>
+
+  <section>
+    <div class="head"><span class="n">02</span><h2>What broke, and what I changed</h2></div>
+    <p class="say">
+      Four live calls produced four failures. <b>None of them showed up in testing</b> &mdash; they
+      only exist once a real person is on the line. This is the loop I would bring to a customer's
+      deployment.
+    </p>
+
+    <div class="fix">
+      <div class="f">
+        <span class="broke">Receptionist said the contact no longer worked there. The agent thanked her and hung up &mdash; on the one person who knew who had replaced her.</span>
+        <span class="did">Added a "who's handling that now?" branch that takes the new name and asks to be transferred. Reflex sympathy banned in the prompt.</span>
+      </div>
+      <div class="f">
+        <span class="broke">Told the name was wrong, the agent repeated the same name. The firm asked to be removed from the list &mdash; permanently.</span>
+        <span class="did">Separate branch for "no such person here." Removal now enforced in code at three points, matched on phone number <em>and</em> company name.</span>
+      </div>
+      <div class="f">
+        <span class="broke">Offered voicemail, the agent froze and repeated "hello" four times.</span>
+        <span class="did">Explicit voicemail path, then eight browser tests that must all pass before any batch dials.</span>
+      </div>
+      <div class="f">
+        <span class="broke">Agent narrated its own reasoning aloud on the line, then sat through the whole phone tree twice &mdash; 45 wasted seconds per call.</span>
+        <span class="did">Prompt now forbids speaking its reasoning, and dials the extension on first hearing instead of waiting out the menu.</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="n">03</span><h2>Guardrails and enablement</h2></div>
+    <p class="say">
+      Every failure above became a written rule or a gate. <b>Nothing important is left as a note</b>
+      &mdash; prose is a guideline, a gate is a gate.
+    </p>
+
+    <div class="lrs">
+      <div class="lr"><span class="k">Pre-dial gate</span><span class="v">Blocks a batch on a do-not-call match, a malformed number the platform would silently drop, a duplicate firm, or a contact whose title can't make the decision. <em>Negative-tested both ways &mdash; proven to block, not just to pass.</em></span></div>
+      <div class="lr"><span class="k">Runbook</span><span class="v">Nine numbered steps from hearing a bad call to redialing a fixed agent, including the two steps people skip. Written so someone else can run it without me.</span></div>
+      <div class="lr"><span class="k">Test script</span><span class="v">Eight scenarios &mdash; wrong person, no such person, voicemail, "take me off your list," "are you a robot," and a clean yes. Free, ten minutes, run before any change reaches a phone.</span></div>
+      <div class="lr"><span class="k">Row spec</span><span class="v">Written <em>before</em> the first call, so results couldn't be graded generously afterwards. Five rules, all five, or the record is "not checked" &mdash; never a "no."</span></div>
+      <div class="lr"><span class="k">Compliance</span><span class="v">Business landlines only, no mobiles. Removal requests are permanent and enforced at three separate points in the pipeline.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="n">04</span><h2>The pipeline feeding it</h2></div>
+    <p class="say">An agent is only as good as the record it dials, so I built that half too.</p>
+
+    <div class="lrs">
+      <div class="lr"><span class="k">Source</span><span class="v">Live job-board APIs across two metros, diffed weekly for new, still-open and filled roles.</span></div>
+      <div class="lr"><span class="k">Verify</span><span class="v">Every phone and email checked against the company's own website. <em>No pattern-guessed addresses, ever.</em></span></div>
+      <div class="lr"><span class="k">Identity</span><span class="v">Proves the named company owns the domain, email and phone on the record &mdash; after a mis-resolved listing once joined two companies into one.</span></div>
+      <div class="lr"><span class="k">Operate</span><span class="v">Unattended on a Linux VPS via cron, with a canary on the upstream feed and a second machine watching daily. <em>A job that never runs emits no error.</em></span></div>
+      <div class="lr"><span class="k">Deliver</span><span class="v">195 accounts across seven weeks, zero duplicates, enforced by an append-only ledger.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head"><span class="n">05</span><h2>Built with</h2></div>
+    <p class="tail" style="margin-top:0">
+      Retell &middot; Python &middot; REST APIs &middot; structured extraction schemas &middot; prompt
+      design and branch testing &middot; Linux VPS, cron, watchdog &middot; a 105-test suite on the
+      sourcing engine. <strong>I design the systems and direct the build with AI</strong> rather than
+      writing every line by hand &mdash; and I own every gate, test and failure log in them.
+    </p>
+  </section>
+
+  <footer>
+    <p>Client and contact details deliberately absent. Call recording, runbook and test script available on request.</p>
+    <a class="mail" href="mailto:gromikooai@gmail.com?subject=Voice%20AI%20Implementation%20role">gromikooai@gmail.com</a>
+  </footer>
+
+</div>
